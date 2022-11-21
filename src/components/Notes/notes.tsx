@@ -5,7 +5,7 @@ import { Button } from "../Button/button";
 import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
-import { editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
+import { clearInputAction, editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
 
 export const Notes: React.FC = () => {
     const notes = useTypedSelector(store => store.note.noteList);
@@ -17,6 +17,8 @@ export const Notes: React.FC = () => {
 
     const removeNote = (id: number): void => {
         dispatch(removeNoteAction(id));
+        dispatch(setEditModeAction(false));
+        dispatch(clearInputAction());
     }
 
     const editNote = (id: number, text: string): void => {

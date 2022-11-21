@@ -11,6 +11,15 @@ export function notesReducer(state = initialState, action: NoteAction): NoteStat
             return { ...state, noteList: [...state.noteList, action.payload] };
         case NoteActionTypes.REMOVE_NOTE:
             return { ...state, noteList: state.noteList.filter(item => item.id !== action.payload) };
+        case NoteActionTypes.EDIT_NOTE:
+            const newNoteList = state.noteList;
+            newNoteList.map(note => {
+                if (note.id === action.payload.noteID) {
+                    return note.noteText = action.payload.noteText
+                }
+                return note
+            })
+            return { ...state, noteList: [...newNoteList!] }
         case NoteActionTypes.UPDATE_DATA:
             return { ...state, data: action.payload };
         default:

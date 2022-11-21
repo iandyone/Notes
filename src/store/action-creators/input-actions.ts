@@ -8,7 +8,7 @@ export const editNoteTextAction = (text: string): InputAction => {
     return { type: InputActionTypes.EDIT_NOTE_TEXT, payload: text }
 }
 
-export const setEditModeAction = (mode: boolean, id: number): InputAction => {
+export const setEditModeAction = (mode: boolean, id = 0): InputAction => {
     return { type: InputActionTypes.SET_EDIT_MODE, payload: { active: mode, editableNoteID: id } }
 }
 

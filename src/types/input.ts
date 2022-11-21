@@ -1,8 +1,14 @@
+import { LegacyRef } from "react";
+
 export enum InputActionTypes {
     SET_NOTE_TEXT = "SET_NOTE_TEXT",
     EDIT_NOTE_TEXT = "EDIT_NOTE_TEXT",
     CLEAR_INPUT = "CLEAR_INPUT",
     SET_EDIT_MODE = "SET_EDIT_MODE",
+}
+
+export interface InputProps {
+    reference?: LegacyRef<HTMLInputElement>;
 }
 
 interface SetNoteTextAction {
@@ -23,12 +29,11 @@ interface SetEditModeAction {
     type: InputActionTypes.SET_EDIT_MODE,
     payload: {
         active: boolean,
-        editableNoteID: number,
+        editableNoteID?: number,
     }
 }
 
 export type InputAction = SetNoteTextAction | ClearInputAction | EditNoteTextAction | SetEditModeAction;
-
 
 export interface InputState {
     noteText: string;
