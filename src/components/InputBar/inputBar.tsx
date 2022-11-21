@@ -1,17 +1,17 @@
-import { Dispatch, useRef } from "react";
+import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { clearInputAction, setEditModeAction } from "../../store/action-creators/input-actions";
 import { editNodeAction, setValueAction } from "../../store/action-creators/note-actions";
+import { InputBarProps } from "../../types/input";
 import { Note } from "../../types/note";
 import { Button } from "../Button/button";
 import { Input } from "../Input/input";
 
-export const InputBar: React.FC = () => {
+export const InputBar: React.FC<InputBarProps> = (props) => {
     const { noteText, editMode, editableNodeID } = useTypedSelector(store => store.input);
     const buttonText = (editMode) ? "Edit note" : "Add note";
     const dispatch: Dispatch<any> = useDispatch();
-    const inputRef = useRef<HTMLInputElement>(null);
 
     function handleClick() {
         if (noteText) {
@@ -31,7 +31,7 @@ export const InputBar: React.FC = () => {
 
     return (
         <form action="#">
-            <Input reference={inputRef} />
+            <Input reference={props.reference} />
             <Button buttonText={buttonText} handleClick={handleClick} />
         </form>
     );

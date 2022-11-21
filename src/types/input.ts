@@ -7,6 +7,10 @@ export enum InputActionTypes {
     SET_EDIT_MODE = "SET_EDIT_MODE",
 }
 
+export interface InputBarProps extends InputProps {
+    // reference?: MutableRefObject<any>
+}
+
 export interface InputProps {
     reference?: LegacyRef<HTMLInputElement>;
 }

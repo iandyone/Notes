@@ -6,8 +6,9 @@ import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
 import { clearInputAction, editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
+import { NotesBarProps } from "../../types/note";
 
-export const Notes: React.FC = () => {
+export const Notes: React.FC<NotesBarProps> = (props) => {
     const notes = useTypedSelector(store => store.note.noteList);
     const dispatch: Dispatch<any> = useDispatch();
 
@@ -24,7 +25,7 @@ export const Notes: React.FC = () => {
     const editNote = (id: number, text: string): void => {
         dispatch(setEditModeAction(true, id));
         dispatch(editNoteTextAction(text));
-
+        props.reference?.current.focus();
     }
 
     return (

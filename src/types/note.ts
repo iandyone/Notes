@@ -1,8 +1,14 @@
+import { MutableRefObject } from "react";
+
 export enum NoteActionTypes {
     ADD_NOTE = "ADD_NOTE",
     REMOVE_NOTE = "REMOVE_NOTE",
     EDIT_NOTE = "EDIT_CURRENT_NOTE",
     UPDATE_DATA = "UPDATE_DATA",
+}
+
+export interface NotesBarProps {
+    reference?: MutableRefObject<any>
 }
 
 export interface Note {
