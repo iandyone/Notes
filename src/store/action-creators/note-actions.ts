@@ -1,6 +1,6 @@
 import { Note, NoteAction, NoteActionTypes } from "../../types/note";
 
-export function addNoteAction(note: Note): NoteAction {
+export function setValueAction(note: Note): NoteAction {
     return { type: NoteActionTypes.ADD_NOTE, payload: note };
 }
 

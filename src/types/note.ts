@@ -14,7 +14,7 @@ export enum NoteActionTypes {
     UPDATE_DATA = "UPDATE_DATA",
 }
 
-interface AddNoteAction {
+interface setValueAction {
     type: NoteActionTypes.ADD_NOTE,
     payload: Note;
 }
@@ -29,4 +29,4 @@ interface UpdateDataAction {
     payload: string;
 }
 
-export type NoteAction = AddNoteAction | UpdateDataAction | RemoveNoteAction;
+export type NoteAction = setValueAction | UpdateDataAction | RemoveNoteAction;

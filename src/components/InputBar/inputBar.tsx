@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { clearInputAction } from "../../store/action-creators/input-acrions";
-import { addNoteAction } from "../../store/action-creators/note-actions";
+import { setValueAction } from "../../store/action-creators/note-actions";
 import { Note } from "../../types/note";
 import { Button } from "../Button/button";
 import { Input } from "../Input/input";
@@ -16,7 +16,7 @@ export const InputBar: React.FC = () => {
             noteText: newNote,
         }
 
-        dispatch(addNoteAction(note));
+        dispatch(setValueAction(note));
         dispatch(clearInputAction());
     }
 
