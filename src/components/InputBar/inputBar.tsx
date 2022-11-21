@@ -1,29 +1,35 @@
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { clearInputAction } from "../../store/action-creators/input-acrions";
+import { clearInputAction } from "../../store/action-creators/input-actions";
 import { setValueAction } from "../../store/action-creators/note-actions";
 import { Note } from "../../types/note";
 import { Button } from "../Button/button";
 import { Input } from "../Input/input";
 
 export const InputBar: React.FC = () => {
-    const newNote = useTypedSelector(store => store.input.value);
+    const { noteText } = useTypedSelector(store => store.input);
+    // const buttonText = (editMode) ? "Edit note" : "Add note";
+
     const dispatch = useDispatch();
+    const inputRef = useRef<HTMLInputElement>(null);
 
     function handleClick() {
-        const note: Note = {
-            id: Date.now(),
-            noteText: newNote,
-        }
+        if (noteText) {
+            const note: Note = {
+                id: Date.now(),
+                noteText: noteText,
+            }
 
-        dispatch(setValueAction(note));
-        dispatch(clearInputAction());
+            dispatch(setValueAction(note));
+            dispatch(clearInputAction());
+        }
     }
 
     return (
         <form action="#">
-            <Input />
-            <Button buttonText='Add note' handleClick={handleClick} />
+            <Input reference={inputRef} />
+            <Button buttonText={"Add note"} handleClick={handleClick} />
         </form>
     );
 }

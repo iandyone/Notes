@@ -1,10 +1,16 @@
 export enum InputActionTypes {
-    SET_VALUE = "SET_VALUE",
+    SET_NOTE_TEXT = "SET_NOTE_TEXT",
+    EDIT_NOTE_TEXT = "EDIT_NOTE_TEXT",
     CLEAR_INPUT = "CLEAR_INPUT",
 }
 
-interface SetValueAction {
-    type: InputActionTypes.SET_VALUE,
+interface SetNoteTextAction {
+    type: InputActionTypes.SET_NOTE_TEXT,
+    payload: string;
+}
+
+interface EditNoteTextAction {
+    type: InputActionTypes.EDIT_NOTE_TEXT;
     payload: string;
 }
 
@@ -12,10 +18,10 @@ interface ClearInputAction {
     type: InputActionTypes.CLEAR_INPUT;
 }
 
-export type InputAction = SetValueAction | ClearInputAction;
+export type InputAction = SetNoteTextAction | ClearInputAction | EditNoteTextAction;
 
 
 export interface InputState {
-    value: string;
+    noteText: string;
 }
 

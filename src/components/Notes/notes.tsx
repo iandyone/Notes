@@ -5,6 +5,7 @@ import { Button } from "../Button/button";
 import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
+import { editNoteTextAction } from "../../store/action-creators/input-actions";
 
 export const Notes: React.FC = () => {
     const notes = useTypedSelector(store => store.note.noteList);
@@ -16,6 +17,11 @@ export const Notes: React.FC = () => {
 
     const removeNote = (id: number): void => {
         dispatch(removeNoteAction(id));
+    }
+
+    const editNote = (id: number, text: string): void => {
+        dispatch(editNoteTextAction(text));
+
     }
 
     return (
@@ -37,7 +43,7 @@ export const Notes: React.FC = () => {
                                 <td>{index + 1}</td>
                                 <td>{note.noteText}</td>
                                 <td>
-                                    <Button >
+                                    <Button handleClick={() => editNote(note.id, note.noteText)} >
                                         <FaEdit />
                                     </Button>
                                     <Button handleClick={() => removeNote(note.id)}>

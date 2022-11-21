@@ -29,4 +29,6 @@ interface UpdateDataAction {
     payload: string;
 }
 
+
+
 export type NoteAction = setValueAction | UpdateDataAction | RemoveNoteAction;
