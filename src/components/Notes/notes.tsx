@@ -31,7 +31,6 @@ export const Notes: React.FC<NotesBarProps> = (props) => {
     return (
         <>
             <h1>Notes component</h1>
-
             <table>
                 <thead>
                     <tr>

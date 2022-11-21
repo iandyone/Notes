@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { InputBar } from '../InputBar/inputBar';
 import { Notes } from '../Notes/notes';
+import { TagBar } from '../TagBar/tagbar';
 import './App.scss';
 
 export const App: React.FC = () => {
@@ -9,7 +10,8 @@ export const App: React.FC = () => {
     return (
         <div className="container">
             <h1>App component</h1>
-            <InputBar reference={inputRef}/>
+            <InputBar reference={inputRef} />
+            <TagBar />
             <Notes reference={inputRef} />
         </div>
     )
