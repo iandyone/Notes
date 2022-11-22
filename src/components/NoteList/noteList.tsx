@@ -7,7 +7,7 @@ import { Note, NoteListProps } from "../../types/note";
 import "./noteList.scss";
 
 export const NoteList: React.FC<NoteListProps> = (props) => {
-    const { noteList, tags} = useTypedSelector(store => store.note);
+    const { noteList, tags } = useTypedSelector(store => store.note);
     const filteredNoteList = getFilteredNoteList();
     const dispatch: Dispatch<any> = useDispatch();
 
@@ -24,6 +24,7 @@ export const NoteList: React.FC<NoteListProps> = (props) => {
         dispatch(setEditModeAction(true, id));
         dispatch(editNoteTextAction(text));
         props.reference?.current.focus();
+        props.reference!.current.disabled = false;
     }
 
     useEffect(() => {

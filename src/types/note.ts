@@ -9,12 +9,12 @@ export enum NoteActionTypes {
 }
 
 export interface NoteListProps {
-    reference?: MutableRefObject<any>
+    reference?: MutableRefObject<any>;
 }
 
-export interface ActionsProps extends NoteListProps {};
+export interface ActionsProps extends NoteListProps { };
 
-export interface NotesProps extends NoteListProps{};
+export interface NotesProps extends NoteListProps { };
 
 export interface Note {
     id: number;

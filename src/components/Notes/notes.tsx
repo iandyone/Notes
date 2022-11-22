@@ -19,6 +19,7 @@ export const Notes: React.FC<NotesProps> = (props) => {
         dispatch(addNoteAction(note));
         dispatch(setEditModeAction(true, note.id));
         dispatch(editNoteTextAction(note.noteText));
+        props.reference!.current!.disabled = false;
         props.reference?.current.focus();
     }
     return (

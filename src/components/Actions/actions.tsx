@@ -19,7 +19,7 @@ export const Actions: React.FC<ActionsProps> = (props) => {
             dispatch(clearInputAction());
             dispatch(addTagAction([]));
             dispatch(setEditModeAction(false));
-        } else {
+        } else if (noteText) {
             const note: Note = {
                 id: Date.now(),
                 noteText: noteText,
@@ -42,8 +42,8 @@ export const Actions: React.FC<ActionsProps> = (props) => {
             <div className="actions__header">
                 <h1 className="actions__title">Edit Note</h1>
                 <div className="actions__buttons">
-                    <Button handleClick={saveNote} className="actions__button-save" buttonText="Save" />
-                    <Button handleClick={deleteNote} className="actions__button-delete" buttonText="Delete" />
+                    <Button className="actions__button-save" buttonText="Save" handleClick={saveNote} reference={props.reference} />
+                    <Button className="actions__button-delete" buttonText="Delete" handleClick={deleteNote} reference={props.reference} />
                 </div>
             </div>
             <Input reference={props.reference} />
