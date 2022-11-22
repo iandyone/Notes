@@ -8,11 +8,17 @@ export const App: React.FC = () => {
     const inputRef = useRef(null)
 
     return (
-        <div className="container">
-            <h1>App component</h1>
-            <InputBar reference={inputRef} />
-            <TagBar />
-            <Notes reference={inputRef} />
-        </div>
+        <article className='editor'>
+            <div className='editor__container'>
+                <section className='editor__notes notes'>
+                    <h1>App component</h1>
+                    <Notes reference={inputRef} />
+                </section>
+                <section className='editor__actions actions'>
+                    <InputBar reference={inputRef} />
+                    <TagBar />
+                </section>
+            </div>
+        </article>
     )
 }

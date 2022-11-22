@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addTagAction, removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
 import { clearInputAction, editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
 import { Note, NotesBarProps } from "../../types/note";
+import "./notes.scss";
 
 export const Notes: React.FC<NotesBarProps> = (props) => {
     const { noteList, tags } = useTypedSelector(store => store.note);

@@ -1,0 +1,19 @@
+@mixin button($color, $bgColor) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    width: 100%;
+    max-width: 84px;
+    height: 40px;
+    border: 1px solid $color;
+    border-radius: 10px;
+    color: $mainColor;
+    background-color: $bgColor;
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+}

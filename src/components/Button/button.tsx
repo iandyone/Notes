@@ -1,4 +1,5 @@
 import { ButtonProps } from "../../types/button";
+import "./button.scss";
 
 export const Button: React.FC<ButtonProps> = (props) => {
     const { buttonText, handleClick, children } = props;

@@ -7,6 +7,7 @@ import { InputBarProps } from "../../types/input";
 import { Note } from "../../types/note";
 import { Button } from "../Button/button";
 import { Input } from "../Input/input";
+import "./inputBar.scss";
 
 export const InputBar: React.FC<InputBarProps> = (props) => {
     const { noteText, editMode, editableNodeID } = useTypedSelector(store => store.input);
@@ -31,9 +32,10 @@ export const InputBar: React.FC<InputBarProps> = (props) => {
     }
 
     return (
-        <form action="#">
+        <div className="actions__input-bar input-bar">
+            <h1 className="input-bar__title">Edit note</h1>
             <Input reference={props.reference} />
             <Button buttonText={buttonText} handleClick={handleClick} />
-        </form>
+        </div>
     );
 }

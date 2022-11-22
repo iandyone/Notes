@@ -10,7 +10,7 @@ export enum InputActionTypes {
 export interface InputBarProps extends InputProps {}
 
 export interface InputProps {
-    reference?: LegacyRef<HTMLInputElement>;
+    reference?: LegacyRef<HTMLTextAreaElement>;
 }
 
 interface SetNoteTextAction {
