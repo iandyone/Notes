@@ -4,29 +4,40 @@ import { MdDelete } from 'react-icons/md';
 import { Button } from "../Button/button";
 import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
+import { addTagAction, removeNoteAction, updateDataAction } from "../../store/action-creators/note-actions";
 import { clearInputAction, editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
-import { NotesBarProps } from "../../types/note";
+import { Note, NotesBarProps } from "../../types/note";
 
 export const Notes: React.FC<NotesBarProps> = (props) => {
-    const notes = useTypedSelector(store => store.note.noteList);
+    const { noteList, tags } = useTypedSelector(store => store.note);
+    const filteredNoteList = getFilteredNoteList();
     const dispatch: Dispatch<any> = useDispatch();
 
-    useEffect(() => {
-        dispatch(updateDataAction(notes));
-    }, [notes, dispatch])
+    function getFilteredNoteList() {
+        function hasTag(word: string): boolean {
+            return tags.includes(word);
+        }
 
-    const removeNote = (id: number): void => {
-        dispatch(removeNoteAction(id));
-        dispatch(setEditModeAction(false));
-        dispatch(clearInputAction());
+        const arr: Note[] = (tags.length) ? noteList.filter(note => note.noteText.split(" ").some(hasTag)) : noteList;
+        return arr.sort((a, b) => b.id - a.id);
     }
 
-    const editNote = (id: number, text: string): void => {
+    function removeNote(id: number): void {
+        dispatch(removeNoteAction(id));
+        dispatch(clearInputAction());
+        dispatch(addTagAction([]));
+        dispatch(setEditModeAction(false));
+    }
+
+    function editNote(id: number, text: string): void {
         dispatch(setEditModeAction(true, id));
         dispatch(editNoteTextAction(text));
         props.reference?.current.focus();
     }
+
+    useEffect(() => {
+        dispatch(updateDataAction(noteList));
+    }, [noteList, dispatch])
 
     return (
         <>
@@ -40,7 +51,7 @@ export const Notes: React.FC<NotesBarProps> = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {notes.map((note, index) => {
+                    {filteredNoteList.map((note, index) => {
                         return (
                             <tr key={note.id}>
                                 <td>{index + 1}</td>

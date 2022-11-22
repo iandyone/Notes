@@ -8,7 +8,7 @@ import "./input.scss";
 export const Input: React.FC<InputProps> = (props) => {
     const noteText = useTypedSelector(store => store.input.noteText);
     const dispatch: Dispatch<any> = useDispatch();
-
+    
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         dispatch(setNoteText(e.target.value));
     }

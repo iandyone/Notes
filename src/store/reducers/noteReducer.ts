@@ -2,6 +2,7 @@ import { NoteAction, NoteActionTypes, NoteState } from "../../types/note";
 
 const initialState: NoteState = {
     noteList: [],
+    tags: [],
     data: "",
 }
 
@@ -22,6 +23,9 @@ export function notesReducer(state = initialState, action: NoteAction): NoteStat
             return { ...state, noteList: [...newNoteList!] }
         case NoteActionTypes.UPDATE_DATA:
             return { ...state, data: action.payload };
+        case NoteActionTypes.ADD_TAG: {
+            return { ...state, tags: action.payload };
+        }
         default:
             return state;
     }

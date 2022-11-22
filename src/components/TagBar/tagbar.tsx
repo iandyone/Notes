@@ -1,8 +1,14 @@
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { addTagAction } from "../../store/action-creators/note-actions";
+import "./tagbar.scss";
 
 export const TagBar: React.FC = () => {
     const { noteList } = useTypedSelector(store => store.note);
+    const { tags } = useTypedSelector(store => store.note);
     const tagList = getTagList();
+    const dispatch: Dispatch<any> = useDispatch();
 
     function getTagList(): string[] {
         const tagList: string[] = [];
@@ -13,11 +19,16 @@ export const TagBar: React.FC = () => {
         return Array.from(new Set(tagList));
     }
 
+    function handleClick(newTag: string,): void {
+        const activeTagList: string[] = (tags.includes(newTag)) ? tags.filter(tag => tag !== newTag) : Array.from(new Set([...tags, newTag]));
+        dispatch(addTagAction(activeTagList));
+    }
+
     return (
         <>
             <h1>TagBar</h1>
             {tagList.map((tag, index) => {
-                return <span key={index} style={{ marginRight: "15px" }}>{tag}</span>
+                return <span key={index} onClick={() => handleClick(tag)} className="tag">{tag}</span>
             })}
         </>
     );

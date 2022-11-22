@@ -5,6 +5,7 @@ export enum NoteActionTypes {
     REMOVE_NOTE = "REMOVE_NOTE",
     EDIT_NOTE = "EDIT_CURRENT_NOTE",
     UPDATE_DATA = "UPDATE_DATA",
+    ADD_TAG = "ADD_TAG",
 }
 
 export interface NotesBarProps {
@@ -19,6 +20,7 @@ export interface Note {
 export interface NoteState {
     noteList: Note[];
     data: string;
+    tags: string[];
 }
 
 interface setValueAction {
@@ -44,5 +46,10 @@ interface EditNoteAction {
     }
 }
 
+interface AddTagAction {
+    type: NoteActionTypes.ADD_TAG;
+    payload: string[];
+}
 
-export type NoteAction = setValueAction | UpdateDataAction | RemoveNoteAction | EditNoteAction;
+
+export type NoteAction = setValueAction | UpdateDataAction | RemoveNoteAction | EditNoteAction | AddTagAction;

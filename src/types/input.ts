@@ -30,7 +30,7 @@ interface ClearInputAction {
 interface SetEditModeAction {
     type: InputActionTypes.SET_EDIT_MODE,
     payload: {
-        active: boolean,
+        status: boolean,
         editableNoteID?: number,
     }
 }

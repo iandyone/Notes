@@ -8,8 +8,8 @@ export const editNoteTextAction = (text: string): InputAction => {
     return { type: InputActionTypes.EDIT_NOTE_TEXT, payload: text };
 }
 
-export const setEditModeAction = (mode: boolean, id = 0): InputAction => {
-    return { type: InputActionTypes.SET_EDIT_MODE, payload: { active: mode, editableNoteID: id } };
+export const setEditModeAction = (mode: boolean, id = -1): InputAction => {
+    return { type: InputActionTypes.SET_EDIT_MODE, payload: { status: mode, editableNoteID: id } };
 }
 
 export const clearInputAction = (): InputAction => {
