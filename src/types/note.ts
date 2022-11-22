@@ -8,9 +8,13 @@ export enum NoteActionTypes {
     ADD_TAG = "ADD_TAG",
 }
 
-export interface NotesBarProps {
+export interface NoteListProps {
     reference?: MutableRefObject<any>
 }
+
+export interface ActionsProps extends NoteListProps {};
+
+export interface NotesProps extends NoteListProps{};
 
 export interface Note {
     id: number;

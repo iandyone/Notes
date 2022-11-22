@@ -1,0 +1,39 @@
+@import "../../scss/variables.scss";
+@import "../../scss/templates.scss";
+@import "../../scss/mixins.scss";
+
+.actions {
+    flex: 0 1 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        @extend %title;
+        display: inline-block;
+    }
+
+    &__buttons {
+        display: flex;
+        column-gap: 8px;
+
+        & > button {
+            width: 84px;
+        }
+    }
+
+    &__button-save {
+        @include button($mainColor, $blue, $blue);
+    }
+
+    &__button-delete {
+        @include button($orange, $orange, transparent);
+    }
+}

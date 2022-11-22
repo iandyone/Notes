@@ -1,40 +1,31 @@
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { clearInputAction, setEditModeAction } from "../../store/action-creators/input-actions";
-import { addNoteAction, addTagAction, editNoteAction } from "../../store/action-creators/note-actions";
-import { Note, NotesBarProps } from "../../types/note";
+import { editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
+import { addNoteAction } from "../../store/action-creators/note-actions";
+import { Note, NotesProps } from "../../types/note";
 import { Button } from "../Button/button";
 import { NoteList } from "../NoteList/noteList";
 import "./notes.scss";
 
-
-export const Notes: React.FC<NotesBarProps> = (props) => {
-    const { noteText, editMode, editableNodeID } = useTypedSelector(store => store.input);
-    const buttonText = (editMode) ? "Edit note" : "Add note";
+export const Notes: React.FC<NotesProps> = (props) => {
     const dispatch: Dispatch<any> = useDispatch();
 
     function handleClick() {
-        if (noteText) {
-            if (editMode) {
-                dispatch(editNoteAction(editableNodeID!, noteText));
-                dispatch(addTagAction([]));
-                dispatch(setEditModeAction(false));
-            } else {
-                const note: Note = {
-                    id: Date.now(),
-                    noteText: noteText,
-                }
-                dispatch(addNoteAction(note));
-            }
-            dispatch(clearInputAction());
+        const note: Note = {
+            id: Date.now(),
+            noteText: "New note",
         }
+
+        dispatch(addNoteAction(note));
+        dispatch(setEditModeAction(true, note.id));
+        dispatch(editNoteTextAction(note.noteText));
+        props.reference?.current.focus();
     }
     return (
         <section className="editor__notes notes">
             <h1 className="notes__title">Notes</h1>
+            <Button className="notes__button" buttonText="Add new note" handleClick={handleClick} />
             <NoteList reference={props.reference} />
-            <Button className="notes__button" buttonText={buttonText} handleClick={handleClick} />
         </section>
     );
 }
