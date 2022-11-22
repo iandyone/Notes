@@ -1,0 +1,23 @@
+@import "../../scss/variables.scss";
+@import "../../scss/templates.scss";
+@import "../../scss/mixins.scss";
+
+
+.notes {
+    flex: 1 0 280px;
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        @extend %title;
+        margin-bottom: 16px;
+        padding-left: 20px
+    }
+
+    &__button {
+        @include button($blue, $blue, transparent);
+        width: 100%;
+        max-width: 240px;
+        align-self: center;
+    }
+}

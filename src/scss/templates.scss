@@ -12,16 +12,3 @@
     line-height: 120%;
     color: $textColor;
 }
-
-%button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    width: 100%;
-    max-width: 84px;
-    height: 40px;
-    border: 1px solid $orange;
-    border-radius: 10px;
-    color: $mainColor;
-}

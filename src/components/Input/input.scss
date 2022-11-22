@@ -1,7 +1,22 @@
 @import "../../scss/variables.scss";
 
-.input-bar__input {
+.actions__input {
     resize: none;
     padding: 24px;
     border: 1px solid $border;
+    width: 100%;
+    max-width: 780px;
+    height: 100%;
+    border: 1px solid $border;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+    &:hover {
+        border: 1px solid $blue;
+        transition: all 0.3s ease;
+    }
+
+    &:focus {
+        border: 1px solid $textColor;
+    }
 }

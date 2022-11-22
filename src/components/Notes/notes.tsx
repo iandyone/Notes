@@ -31,10 +31,10 @@ export const Notes: React.FC<NotesBarProps> = (props) => {
         }
     }
     return (
-        <section className='editor__notes notes'>
-            <h1>App component</h1>
+        <section className="editor__notes notes">
+            <h1 className="notes__title">Notes</h1>
             <NoteList reference={props.reference} />
-            <Button buttonText={buttonText} handleClick={handleClick} />
+            <Button className="notes__button" buttonText={buttonText} handleClick={handleClick} />
         </section>
     );
 }

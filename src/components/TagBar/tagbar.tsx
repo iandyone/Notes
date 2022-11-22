@@ -25,11 +25,10 @@ export const TagBar: React.FC = () => {
     }
 
     return (
-        <>
-            <h1>TagBar</h1>
+        <div className="actions__tagbar tagbar">
             {tagList.map((tag, index) => {
-                return <span key={index} onClick={() => handleClick(tag)} className="tag">{tag}</span>
+                return <span key={index} onClick={() => handleClick(tag)} className="tagbar__tag">{tag}</span>
             })}
-        </>
+        </div>
     );
 }

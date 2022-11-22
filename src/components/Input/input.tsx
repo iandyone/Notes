@@ -13,5 +13,5 @@ export const Input: React.FC<InputProps> = (props) => {
         dispatch(setNoteText(e.target.value));
     }
 
-    return <textarea className="input-bar__input" ref={props.reference} value={noteText} onChange={(e) => handleChange(e)} placeholder="Enter the note" />
+    return <textarea ref={props.reference} value={noteText} onChange={(e) => handleChange(e)} className="actions__input " placeholder="Enter the note" />
 }

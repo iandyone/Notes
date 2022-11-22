@@ -2,7 +2,7 @@ import { ButtonProps } from "../../types/button";
 import "./button.scss";
 
 export const Button: React.FC<ButtonProps> = (props) => {
-    const { buttonText, handleClick, children } = props;
+    const { buttonText, handleClick, children, className } = props;
     const buttonContent: any = (children) ? children : buttonText;
 
     const onClickHandle: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -12,5 +12,5 @@ export const Button: React.FC<ButtonProps> = (props) => {
         }
     }
 
-    return <button onClick={(e) => onClickHandle(e)}>{buttonContent}</button>
+    return <button className={className} onClick={(e) => onClickHandle(e)}>{buttonContent}</button>
 }
