@@ -12,11 +12,7 @@ export const NoteList: React.FC<NoteListProps> = (props) => {
     const dispatch: Dispatch<any> = useDispatch();
 
     function getFilteredNoteList() {
-        function hasTag(word: string): boolean {
-            return tags.includes(word);
-        }
-
-        const arr: INote[] = (tags.length) ? noteList.filter(note => note.noteText.split(/[\s,\n,\t,]+/).some(hasTag)) : noteList;
+        const arr: INote[] = noteList.filter(note => tags.every((tag) => note.noteText.split(/[\s,\n,\t,]+/).includes(tag)));
         return arr.sort((a, b) => b.id - a.id);
     }
 

@@ -31,9 +31,31 @@
 
     &__button-save {
         @include button($mainColor, $blue, $blue);
+        position: relative;
+
+        &:hover {
+            background-color: $blueHover;
+        }
+
+        &:active {
+            top: 2px;
+            transition: all 0.1s ease;
+        }
     }
 
     &__button-delete {
         @include button($orange, $orange, transparent);
+        position: relative;
+
+        &:hover {
+            background-color: $orange;
+            color: $mainColor;
+            transition: all 0.2s ease;
+        }
+
+        &:active {
+            top: 2px;
+            transition: all 0.1s ease;
+        }
     }
 }

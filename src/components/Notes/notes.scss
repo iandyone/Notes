@@ -22,5 +22,17 @@
         max-width: 240px;
         align-self: center;
         margin-bottom: 20px;
+        position: relative;
+
+        &:hover {
+            background-color: $blue;
+            color: $mainColor;
+            transition: all .2s ease;
+        }
+        
+        &:active {
+            top: 2px;
+            transition: all .1s ease;
+        }
     }
 }
