@@ -16,20 +16,20 @@ export interface ActionsProps extends NoteListProps { };
 
 export interface NotesProps extends NoteListProps { };
 
-export interface Note {
+export interface INote {
     id: number;
     noteText: string;
 }
 
 export interface NoteState {
-    noteList: Note[];
+    noteList: INote[];
     data: string;
     tags: string[];
 }
 
 interface setValueAction {
     type: NoteActionTypes.ADD_NOTE,
-    payload: Note;
+    payload: INote;
 }
 
 interface RemoveNoteAction {
@@ -53,6 +53,13 @@ interface EditNoteAction {
 interface AddTagAction {
     type: NoteActionTypes.ADD_TAG;
     payload: string[];
+}
+
+export interface NoteProps {
+    id: number;
+    noteText: string;
+    handleClick?: (id: number, text: string) => void;
+    reference: MutableRefObject<any>;
 }
 
 

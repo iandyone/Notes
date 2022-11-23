@@ -2,8 +2,8 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { Dispatch, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateDataAction } from "../../store/action-creators/note-actions";
-import { editNoteTextAction, setEditModeAction } from "../../store/action-creators/input-actions";
-import { Note, NoteListProps } from "../../types/note";
+import { INote, NoteListProps } from "../../types/note";
+import { Note } from "../Note/note";
 import "./noteList.scss";
 
 export const NoteList: React.FC<NoteListProps> = (props) => {
@@ -16,15 +16,8 @@ export const NoteList: React.FC<NoteListProps> = (props) => {
             return tags.includes(word);
         }
 
-        const arr: Note[] = (tags.length) ? noteList.filter(note => note.noteText.split(" ").some(hasTag)) : noteList;
+        const arr: INote[] = (tags.length) ? noteList.filter(note => note.noteText.split(/[\s,\n,\t,]+/).some(hasTag)) : noteList;
         return arr.sort((a, b) => b.id - a.id);
-    }
-
-    function editNote(id: number, text: string): void {
-        dispatch(setEditModeAction(true, id));
-        dispatch(editNoteTextAction(text));
-        props.reference?.current.focus();
-        props.reference!.current.disabled = false;
     }
 
     useEffect(() => {
@@ -33,8 +26,8 @@ export const NoteList: React.FC<NoteListProps> = (props) => {
 
     return (
         <ul className="notes__notelist">
-            {filteredNoteList.map((note, index) => {
-                return <li key={note.id} className="notes__note" onClick={() => editNote(note.id, note.noteText)}><p>{note.noteText}</p></li>
+            {filteredNoteList.map((note) => {
+                return <Note key={note.id} id={note.id} noteText={note.noteText} reference={props.reference!} />
             })}
         </ul>
     );

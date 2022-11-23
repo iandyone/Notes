@@ -1,0 +1,48 @@
+@import "../../scss/variables.scss";
+@import "../../scss/templates.scss";
+
+.notes {
+    &__note {
+        padding: 12px 0px;
+        width: 100%;
+        max-width: 280px;
+        height: 64px;
+        border-radius: 10px;
+        position: relative;
+        display: flex;
+        
+
+        &:hover {
+            background-color: $activeElement;
+            outline: 1px solid $activeElement;
+            transition: background-color 0.1s ease;
+            cursor: pointer;
+        }
+
+        &:not(:last-child)::before {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: 7%;
+            transform: translateY(50%);
+            width: 100%;
+            max-width: 240px;
+            height: 1px;
+            background-color: $border;
+        }
+
+        & > p {
+            @extend %text;
+            padding: 0px 20px;
+            word-break: normal;
+            line-height: 19px;
+            overflow: hidden;
+        height: 40px;
+        }
+    }
+    
+    &__note-active {
+        background-color: $activeElement;
+        outline: 1px solid $activeElement;
+    }
+}

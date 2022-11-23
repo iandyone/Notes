@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { clearInputAction, setEditModeAction } from "../../store/action-creators/input-actions";
 import { addNoteAction, addTagAction, editNoteAction, removeNoteAction } from "../../store/action-creators/note-actions";
-import { ActionsProps, Note } from "../../types/note";
+import { ActionsProps, INote } from "../../types/note";
 import { Button } from "../Button/button";
 import { Input } from "../Input/input";
 import { TagBar } from "../TagBar/tagbar";
@@ -20,7 +20,7 @@ export const Actions: React.FC<ActionsProps> = (props) => {
             dispatch(addTagAction([]));
             dispatch(setEditModeAction(false));
         } else if (noteText) {
-            const note: Note = {
+            const note: INote = {
                 id: Date.now(),
                 noteText: noteText,
             }

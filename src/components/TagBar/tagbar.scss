@@ -2,16 +2,6 @@
 
 .tagbar {
     display: inline-flex;
-    column-gap: 20px;
-
-    &__tag {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 120%;
-        color: $blue;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
+    flex-wrap: wrap;
+    column-gap: 10px;
 }
