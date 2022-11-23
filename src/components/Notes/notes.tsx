@@ -25,7 +25,7 @@ export const Notes: React.FC<NotesProps> = (props) => {
     return (
         <section className="editor__notes notes">
             <h1 className="notes__title">Notes</h1>
-            <Button className="notes__button" buttonText="Add new note" handleClick={handleClick} />
+            <Button className="notes__button" buttonText="Add note" handleClick={handleClick} />
             <NoteList reference={props.reference} />
         </section>
     );

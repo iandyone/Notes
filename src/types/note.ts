@@ -62,5 +62,10 @@ export interface NoteProps {
     reference: MutableRefObject<any>;
 }
 
+export interface TagProps {
+    tag: string;
+    handleClick: (newTag: string) => void;
+}
+
 
 export type NoteAction = setValueAction | UpdateDataAction | RemoveNoteAction | EditNoteAction | AddTagAction;

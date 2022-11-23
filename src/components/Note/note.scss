@@ -10,19 +10,12 @@
         border-radius: 10px;
         position: relative;
         display: flex;
-        
-
-        &:hover {
-            background-color: $activeElement;
-            outline: 1px solid $activeElement;
-            transition: background-color 0.1s ease;
-            cursor: pointer;
-        }
+        margin-bottom: 1px;
 
         &:not(:last-child)::before {
             position: absolute;
             content: "";
-            bottom: 0;
+            bottom: -1px;
             left: 7%;
             transform: translateY(50%);
             width: 100%;
@@ -31,18 +24,40 @@
             background-color: $border;
         }
 
+        &:hover {
+            outline: 1px solid $orange;
+            transition: background-color 0.1s ease;
+            cursor: pointer;
+        }
+
+        &:hover::before {
+            display: none;
+        }
+
         & > p {
             @extend %text;
             padding: 0px 20px;
             word-break: normal;
             line-height: 19px;
             overflow: hidden;
-        height: 40px;
+            height: 40px;
         }
     }
-    
+
     &__note-active {
-        background-color: $activeElement;
-        outline: 1px solid $activeElement;
+        outline: $blue;
+        background-color: $blue;
+
+        & > p {
+            color: $mainColor;
+        }
+
+        &:hover {
+            outline: $blue;
+        }
+
+        &.notes__note::before {
+            display: none;
+        }
     }
 }

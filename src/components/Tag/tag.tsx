@@ -1,10 +1,6 @@
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { TagProps } from "../../types/note";
 import "./tag.scss";
-
-export interface TagProps {
-    tag: string;
-    handleClick: (newTag: string) => void;
-}
 
 export const Tag: React.FC<TagProps> = (props) => {
     const { tag, handleClick } = props;

@@ -16,9 +16,7 @@ export const Actions: React.FC<ActionsProps> = (props) => {
     function saveNote() {
         if (editMode) {
             dispatch(editNoteAction(editableNodeID!, noteText));
-            dispatch(clearInputAction());
             dispatch(addTagAction([]));
-            dispatch(setEditModeAction(false));
         } else if (noteText) {
             const note: INote = {
                 id: Date.now(),
@@ -26,8 +24,6 @@ export const Actions: React.FC<ActionsProps> = (props) => {
             }
             dispatch(addNoteAction(note));
         }
-        dispatch(clearInputAction());
-
     }
 
     function deleteNote() {
@@ -42,8 +38,8 @@ export const Actions: React.FC<ActionsProps> = (props) => {
             <div className="actions__header">
                 <h1 className="actions__title">Edit Note</h1>
                 <div className="actions__buttons">
-                    <Button className="actions__button-save" buttonText="Save" handleClick={saveNote} reference={props.reference} />
-                    <Button className="actions__button-delete" buttonText="Delete" handleClick={deleteNote} reference={props.reference} />
+                    <Button className="actions__button-save" buttonText="Save" handleClick={saveNote} />
+                    <Button className="actions__button-delete" buttonText="Delete" handleClick={deleteNote} />
                 </div>
             </div>
             <Input reference={props.reference} />

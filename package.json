@@ -1,5 +1,5 @@
 {
-  "name": "editor",
+  "name": "notes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,6 @@
     "node-sass": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.6.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
